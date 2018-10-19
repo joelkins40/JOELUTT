@@ -23,24 +23,20 @@ export class IngredientsService {
         for(const i of auxIngredients){
             
             
-        if (this.ingredients.find(obj => obj.name == i.name)){
-            const v=this.ingredients.find(obj => obj.name == i.name);
-            const am=this.ingredients.find(obj => obj.amount == i.amount);
-            let index = this.ingredients.findIndex( record => record.name === v.name );
-            const  fl =am.amount+i.amount;
-            console.log(fl);    
-            this.ingredients.slice(index);
-            
-           
-        }else{
-            this.ingredients.push(i);
-           
-        }
-         
-
-            
-                
-        }
+            if (this.ingredients.find(obj => obj.name == i.name)){
+                const v=this.ingredients.find(obj => obj.name == i.name);
+                const  fl =v.amount+i.amount;
+                const newIngredient = new Ingredient(v.name, fl);
+                       
+                       this.ingredients.push(newIngredient);
+                       let index = this.ingredients.findIndex( record => record.name === i.name );
+                this.ingredients.splice(index,1);
+            }else{
+                this.ingredients.push(i);
+          
+            }              
+       
+    }
         this.ingredientsChanged.emit(this.ingredients.slice());
       }
      
