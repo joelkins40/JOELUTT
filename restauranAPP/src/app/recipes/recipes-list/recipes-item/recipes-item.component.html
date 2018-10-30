@@ -1,4 +1,7 @@
-<a href="#" class="list-group-item list-group-item-action clearfix" (click)="onSelected()">
+<a style="cursor:pointer" class="list-group-item list-group-item-action clearfix"
+[routerLink]="[index]"
+routerLinkActive="active"
+>
   <div class="float-left">
     <h4>{{recipe.name}}</h4>
     <p>{{recipe.description}}</p>
@@ -6,4 +9,4 @@
   <span class="float-right">
     <img [src]="recipe.imagePath" alt="" class="img-fluid" width="400 px">
   </span>
-</a>
+</a> 

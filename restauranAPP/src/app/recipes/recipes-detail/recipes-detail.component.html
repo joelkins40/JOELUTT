@@ -13,15 +13,15 @@
     <div class="btn-group">
       <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
         Manage Recipe
-      </button>
+      </button> 
       <div class="dropdown-menu">
-        <a style="cursor:pointer" class="dropdown-item" (click)="onAddToShoppingList()">To shopping list</a>
-        <a style="cursor:pointer" class="dropdown-item">Edit Recipe</a>
+        <a style="cursor:pointer" class="dropdown-item" (click)="onAddToShoppingList('shopping-list')">To shopping list</a>
+        <a style="cursor:pointer" class="dropdown-item" (click)="onEditRecipe()">Edit Recipe</a>
         <a style="cursor:pointer" class="dropdown-item">Delete Recipe</a>
       </div>
     </div>
-  </div>
-</div>
+  </div> 
+</div> 
 <div class="row">
   <div class="col-12">
     {{recipe.description}}

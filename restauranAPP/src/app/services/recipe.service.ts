@@ -6,7 +6,7 @@ import { IngredientsService } from "./ingredients.service";
 
 @Injectable() // Decorador para poder agregar un servicio dentro de otro
 export class RecipeService {
-    recipeSelected = new EventEmitter<Recipe>();
+//recipeSelected = new EventEmitter<Recipe>();
     
     private recipes: Recipe[] = [
         new Recipe('A test recipe 1', 'This is a simply test ', 'https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/one_pot_chorizo_and_15611_16x9.jpg', 
@@ -33,9 +33,13 @@ export class RecipeService {
       getRecipes(){
           return this.recipes.slice();
       }
+      getRecipe(index: number){
+          return this.recipes[index];
+      }
 
       //Metodo para invocar desde la vista
       addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.ingredientsService.addIngredients(ingredients);
       }
+
 }

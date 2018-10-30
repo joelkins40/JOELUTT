@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,6 +12,8 @@ import { RecipesItemComponent } from './recipes/recipes-list/recipes-item/recipe
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { IngredientsService } from './services/ingredients.service';
 import { AppRoutingModule } from './app-routing.module';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +25,14 @@ import { AppRoutingModule } from './app-routing.module';
     RecipesListComponent,
     RecipesItemComponent,
     ShoppingEditComponent,
+    RecipeStartComponent,
+    RecipesEditComponent,
     
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    FormsModule
     
   ],
   providers: [IngredientsService],
