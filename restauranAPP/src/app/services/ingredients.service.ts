@@ -1,11 +1,10 @@
 import { Ingredient } from "../shared/ingredient.model";
 import { EventEmitter } from "@angular/core";
 import { _appIdRandomProviderFactory } from "@angular/core/src/application_tokens";
-import { Alert } from "selenium-webdriver";
 import { Subject } from "rxjs";
 
 export class IngredientsService {
-    ingredientsChanged = new EventEmitter<Ingredient[]>();
+    ingredientsChanged = new Subject<Ingredient[]>();
     startedEditing=new Subject<number>();
 
     private ingredients: Ingredient [] = [
@@ -20,18 +19,23 @@ export class IngredientsService {
           return this.ingredients[index];
       }
 
+      deleteIngredient(index: number){
+    
+    this.ingredients.splice(index,1);     
+    this.ingredientsChanged.next(this.ingredients.slice());
+    }
+
       addIngredient(ingredient: Ingredient){
           this.ingredients.push(ingredient);
         
-        this.ingredientsChanged.emit(this.ingredients.slice());
-  
-          
+      this.ingredients.slice();
+          this.ingredientsChanged.next(this.ingredients.slice());
 
       }
-updateIngredient(index: number,ingredient: Ingredient){
+updateIngredients(index: number,ingredient: Ingredient){
 this.ingredients[index]=ingredient;
-this.ingredientsChanged.emit(this.ingredients.slice());
-
+this.ingredients.slice();
+this.ingredientsChanged.next(this.ingredients.slice());
 
 }
       addIngredients(auxIngredients: Ingredient[]){
@@ -52,8 +56,9 @@ this.ingredientsChanged.emit(this.ingredients.slice());
             }              
        
     }
-        this.ingredientsChanged.emit(this.ingredients.slice());
+      //  this.ingredientsChanged.emit(this.ingredients.slice());
       }
      
     
     }
+ 
