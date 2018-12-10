@@ -33,6 +33,6 @@ this.recipe = this.recipeService.getRecipe(this.id);
 
   onEditRecipe(){ 
     this.router.navigate(['edit'],{relativeTo:this.route})
-      
+    
   }
 }
